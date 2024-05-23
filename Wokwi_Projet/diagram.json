@@ -94,11 +94,26 @@
     { "type": "wokwi-gnd", "id": "gnd4", "top": 86.4, "left": 642.6, "attrs": {} },
     { "type": "wokwi-gnd", "id": "gnd5", "top": -9.6, "left": 585, "attrs": {} },
     {
+      "type": "wokwi-max7219-matrix",
+      "id": "matrix1",
+      "top": 58.2,
+      "left": 74.64,
+      "rotate": 180,
+      "attrs": { "chain": "4", "layout": "fc16" }
+    },
+    {
       "type": "wokwi-buzzer",
       "id": "bz1",
-      "top": -218.4,
-      "left": 577.8,
+      "top": -304.8,
+      "left": 414.6,
       "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-analog-joystick",
+      "id": "joystick1",
+      "top": -298.2,
+      "left": 629.4,
+      "attrs": {}
     }
   ],
   "connections": [
@@ -122,8 +137,17 @@
     [ "btn4:2.r", "pico:GP17", "green", [ "h0" ] ],
     [ "btn1:2.r", "pico:GP18", "green", [ "h0" ] ],
     [ "btn3:2.r", "pico:GP19", "green", [ "h0" ] ],
-    [ "bz1:1", "pico:GND.8", "green", [ "v0" ] ],
-    [ "bz1:2", "pico:GP27", "green", [ "v0" ] ]
+    [ "matrix1:V+", "pico:VBUS", "green", [ "h0" ] ],
+    [ "matrix1:GND", "pico:GND.4", "black", [ "h0" ] ],
+    [ "matrix1:DIN", "pico:GP11", "green", [ "h0" ] ],
+    [ "matrix1:CS", "pico:GP9", "green", [ "h0" ] ],
+    [ "matrix1:CLK", "pico:GP10", "green", [ "h0" ] ],
+    [ "bz1:1", "pico:GND.3", "green", [ "v0" ] ],
+    [ "bz1:2", "pico:GP8", "green", [ "v0" ] ],
+    [ "joystick1:VCC", "pico:VBUS", "red", [ "v0" ] ],
+    [ "joystick1:VERT", "pico:GP27", "green", [ "v0" ] ],
+    [ "joystick1:HORZ", "pico:GP26", "green", [ "v0" ] ],
+    [ "joystick1:GND", "pico:GND.8", "black", [ "v0" ] ]
   ],
   "dependencies": {}
 }
